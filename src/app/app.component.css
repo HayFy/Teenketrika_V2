@@ -1,0 +1,11 @@
+.center {
+  display: flex;
+  justify-content: center;
+  margin:10%;
+}
+
+.example-card {
+  max-width: 80%;
+}
+
+
