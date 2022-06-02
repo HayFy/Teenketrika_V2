@@ -1,0 +1,24 @@
+<table class="table table-striped table-bordered">
+  <thead>
+      <tr>
+          <th>Titre</th>
+          <th>Entreprise</th>
+          <th>Catégorie</th>
+          <th>Action</th>
+      </tr>
+  </thead>
+
+  <tbody>
+      <tr *ngFor="let job of jobs$ | async">
+          <td>{{job.titre}}</td>
+          <td>{{job.entreprise}}</td>
+          <td>{{job.categorie}}</td>
+          <td>
+              <button class="btn btn-primary me-1" [routerLink]="['edit/', job._id]">Edit</button>
+              <button class="btn btn-danger" (click)="deleteJob(job._id || '')">Delete</button>
+          </td>
+      </tr>
+  </tbody>
+</table>
+
+<button class="btn btn-primary mt-3" [routerLink]="['new']">Add a New Job</button>
