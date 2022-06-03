@@ -1,48 +1,211 @@
-<form class="employee-form" autocomplete="off" [formGroup]="employeeForm" (ngSubmit)="submitForm()">
+<form class="employee-form" autocomplete="off" [formGroup]="jobForm" (ngSubmit)="submitForm()">
+  <!---------ENTREPRISE START-------------->
   <div class="form-floating mb-3">
-    <input class="form-control" type="text" id="name" formControlName="name" placeholder="Name" required>
-    <label for="name">Name</label>
+    <input class="form-control" type="text" id="entreprise" formControlName="entreprise" placeholder="entreprise" required>
+    <label for="entreprise">Entreprise</label>
   </div>
 
-  <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
-    <div *ngIf="name.errors?.['required']">
-      Name is required.
+  <div *ngIf="entreprise.invalid && (entreprise.dirty || entreprise.touched)" class="alert alert-danger">
+    <div *ngIf="entreprise.errors?.['required']">
+      Entreprise is required.
     </div>
-    <div *ngIf="name.errors?.['minlength']">
-      Name must be at least 3 characters long.
+    <div *ngIf="entreprise.errors?.['minlength']">
+      Entreprise must be at least 3 characters long.
     </div>
   </div>
+  <!---------ENTREPRISE END-------------->
 
+  <!---------TITRE START-------------->
   <div class="form-floating mb-3">
-    <input class="form-control" type="text" formControlName="position" placeholder="Position" required>
-    <label for="position">Position</label>
+    <input class="form-control" type="text" formControlName="titre" placeholder="titre" required>
+    <label for="titre">Titre</label>
   </div>
 
-  <div *ngIf="position.invalid && (position.dirty || position.touched)" class="alert alert-danger">
+  <div *ngIf="titre.invalid && (titre.dirty || titre.touched)" class="alert alert-danger">
 
-    <div *ngIf="position.errors?.['required']">
-      Position is required.
+    <div *ngIf="titre.errors?.['required']">
+      Titre is required.
     </div>
-    <div *ngIf="position.errors?.['minlength']">
-      Position must be at least 5 characters long.
+    <div *ngIf="titre.errors?.['minlength']">
+      Titre must be at least 3 characters long.
     </div>
   </div>
+  <!---------TITRE END-------------->
 
+  <!---------TYPE CONTRAT START-------------->
   <div class="mb-3">
     <div class="form-check">
-      <input class="form-check-input" type="radio" formControlName="level" name="level" id="level-junior" value="junior" required>
-      <label class="form-check-label" for="level-junior">Junior</label>
+      <input class="form-check-input" type="radio" formControlName="typeContrat" name="typeContrat" id="type-CDI" value="CDI" required>
+      <label class="form-check-label" for="level-junior">CDI</label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" formControlName="level" name="level" id="level-mid" value="mid">
-      <label class="form-check-label" for="level-mid">Mid</label>
+      <input class="form-check-input" type="radio" formControlName="typeContrat" name="typeContrat" id="type-CDD" value="CDD">
+      <label class="form-check-label" for="level-mid">CDD</label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" formControlName="level" name="level" id="level-senior"
-        value="senior">
-      <label class="form-check-label" for="level-senior">Senior</label>
+      <input class="form-check-input" type="radio" formControlName="typeContrat" name="typeContrat" id="type-stage" value="Stage">
+      <label class="form-check-label" for="level-senior">Stage</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" formControlName="typeContrat" name="typeContrat" id="type-alternance" value="Alternance">
+      <label class="form-check-label" for="level-senior">Alternance</label>
     </div>
   </div>
+  <!---------TYPE CONTRAT END-------------->
 
-  <button class="btn btn-primary" type="submit" [disabled]="employeeForm.invalid">Add</button>
+  <!---------TAGS START-------------->
+  <div class="form-floating mb-3">
+    <input class="form-control" type="text" formControlName="tags" placeholder="tags" required>
+    <label for="tags">Tags</label>
+    <small class="font-italic">Utiliser "," comme séparateur </small>
+  </div>
+
+  <div *ngIf="tags.invalid && (tags.dirty || tags.touched)" class="alert alert-danger">
+    <div *ngIf="tags.errors?.['required']">
+      Tags is required.
+    </div>
+  </div>
+  <!---------TAGS END-------------->
+
+  <!---------EMAIL CANDIDATURE START-------------->
+  <div class="form-floating mb-3">
+    <input class="form-control" type="text" formControlName="emailCandidature" placeholder="emailCandidature" required>
+    <label for="tags">Email d'envoi de la candidature</label>
+  </div>
+
+  <div *ngIf="emailCandidature.invalid && (emailCandidature.dirty || emailCandidature.touched)" class="alert alert-danger">
+    <div *ngIf="emailCandidature.errors?.['required']">
+      EmailCandidature is required.
+    </div>
+    <div *ngIf="emailCandidature.errors?.['email']">
+      Saisissez une adresse email valide
+    </div>
+  </div>
+  <!---------EMAIL CANDIDATURE START-------------->
+
+  <!---------EMAIL OBJET START-------------->
+  <div class="form-floating mb-3">
+    <input class="form-control" type="text" formControlName="emailObjet" placeholder="emailObjet" required>
+    <label for="emailObjet">Objet de l'email de candidature</label>
+  </div>
+
+  <div *ngIf="emailObjet.invalid && (emailObjet.dirty || emailObjet.touched)" class="alert alert-danger">
+    <div *ngIf="emailObjet.errors?.['required']">
+      L'objet de l'email de candidature est requis.
+    </div>
+    <div *ngIf="emailObjet.errors?.['minlength']">
+      must be at least 3 characters long.
+    </div>
+  </div>
+  <!---------EMAIL OBJET END-------------->
+
+  <!---------REGION START-------------->
+  <div class="form-floating mb-3">
+    <input class="form-control" type="text" formControlName="region" placeholder="region" required>
+    <label for="region">Region</label>
+  </div>
+
+  <div *ngIf="region.invalid && (region.dirty || region.touched)" class="alert alert-danger">
+    <div *ngIf="region.errors?.['required']">
+      region is required
+    </div>
+  </div>
+  <!---------REGION END-------------->
+
+  <!---------DISTRICT START-------------->
+  <div class="form-floating mb-3">
+    <input class="form-control" type="text" formControlName="district" placeholder="district" required>
+    <label for="district">District</label>
+  </div>
+
+  <div *ngIf="district.invalid && (district.dirty || district.touched)" class="alert alert-danger">
+    <div *ngIf="district.errors?.['required']">
+      district is required
+    </div>
+  </div>
+  <!---------DISTRICT END-------------->
+
+  <!---------COMMUNE START-------------->
+  <div class="form-floating mb-3">
+    <input class="form-control" type="text" formControlName="commune" placeholder="commune" required>
+    <label for="commune">Commune</label>
+  </div>
+
+  <div *ngIf="commune.invalid && (commune.dirty || commune.touched)" class="alert alert-danger">
+    <div *ngIf="commune.errors?.['required']">
+      commune is required
+    </div>
+  </div>
+  <!---------COMMUNE END-------------->
+
+  <!---------CATEGORIE START-------------->
+  <div class="form-floating mb-3">
+    <input class="form-control" type="text" formControlName="categorie" placeholder="categorie" required>
+    <label for="categorie">Categorie de l'emploi</label>
+  </div>
+
+  <div *ngIf="categorie.invalid && (categorie.dirty || categorie.touched)" class="alert alert-danger">
+    <div *ngIf="categorie.errors?.['required']">
+      Categorie is required
+    </div>
+  </div>
+  <!---------CATEGORIE END-------------->
+
+  <!---------SOUS-CATEGORIE START-------------->
+  <div class="form-floating mb-3">
+    <input class="form-control" type="text" formControlName="sousCategorie" placeholder="sousCategorie" required>
+    <label for="sousCategorie">Sous-categorie</label>
+  </div>
+
+  <div *ngIf="sousCategorie.invalid && (sousCategorie.dirty || sousCategorie.touched)" class="alert alert-danger">
+    <div *ngIf="sousCategorie.errors?.['required']">
+      Sous-Categorie is required
+    </div>
+  </div>
+  <!---------SOUS-CATEGORIE END-------------->
+
+  <!---------DESCRIPTION START-------------->
+  <div class="form-floating mb-3">
+    <textarea class="form-control" formControlName="description" rows="3" placeholder="description" required></textarea>
+    <label for="description">Description</label>
+  </div>
+
+  <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
+    <div *ngIf="description.errors?.['required']">
+      Description is required
+    </div>
+  </div>
+  <!---------DESCRIPTION END-------------->
+
+  <!---------MISSION START-------------->
+  <div class="form-floating mb-3">
+    <textarea class="form-control" formControlName="mission" rows="3" placeholder="mission" ></textarea>
+    <label for="mission">Mission</label>
+  </div>
+  <!---------MISSION END-------------->
+
+  <!---------PROFILE START-------------->
+  <div class="form-floating mb-3">
+    <textarea class="form-control" formControlName="profile" rows="3" placeholder="profile"></textarea>
+    <label for="profile">Profile Rechercher</label>
+  </div>
+  <!---------PROFILE END-------------->
+
+  <!---------DOSSIER START-------------->
+  <div class="form-floating mb-3">
+    <textarea class="form-control" formControlName="dossierRequis" rows="2" placeholder="dossierRequis"></textarea>
+    <label for="dossierRequis">Dossier à fournir</label>
+  </div>
+  <!---------DOSSIER END-------------->
+
+  <!---------DETAILS START-------------->
+  <div class="form-floating mb-3">
+    <textarea class="form-control" formControlName="details" rows="2" placeholder="details" ></textarea>
+    <label for="description">Description</label>
+  </div>
+  <!---------DETAILS END-------------->
+
+
+
+  <button class="btn btn-primary" type="submit" [disabled]="jobForm.invalid">Ajouter</button>
 </form>

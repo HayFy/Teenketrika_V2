@@ -15,6 +15,8 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 import { JobsListComponent } from './jobs-list/jobs-list.component';
 import { JobFormComponent } from './job-form/job-form.component';
+import { AddJobComponent } from './add-job/add-job.component';
+import { EditJobComponent } from './edit-job/edit-job.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { JobFormComponent } from './job-form/job-form.component';
     AddEmployeeComponent,
     EditEmployeeComponent,
     JobsListComponent,
-    JobFormComponent
+    JobFormComponent,
+    AddJobComponent,
+    EditJobComponent
   ],
   imports: [
     BrowserModule,
